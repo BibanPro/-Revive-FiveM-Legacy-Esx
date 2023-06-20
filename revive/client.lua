@@ -1,0 +1,11 @@
+RegisterNetEvent("revivePlayer")
+AddEventHandler("revivePlayer", function()
+    local playerPed = PlayerPedId()
+    local coords = GetEntityCoords(playerPed)
+    local map = GetPlayerServerId(PlayerId())
+
+    NetworkResurrectLocalPlayer(coords, true, true, false)
+    SetPlayerInvincible(playerPed, true)
+    SetEntityHealth(playerPed, GetEntityMaxHealth(playerPed))
+    SetPlayerInvincible(playerPed, false)
+end)
